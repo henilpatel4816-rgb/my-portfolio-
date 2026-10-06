@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Patel Henil - B.Tech Computer Science student at Indus University.">
+  <title>Patel Henil | Portfolio</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080b12;
+      --card: #101621;
+      --card-2: #151c29;
+      --text: #f4f7fb;
+      --muted: #a8b0bf;
+      --accent: #6c63ff;
+      --accent-2: #00d4ff;
+      --border: rgba(255,255,255,.09);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 85% 10%, rgba(108,99,255,.18), transparent 28%),
+        radial-gradient(circle at 10% 30%, rgba(0,212,255,.10), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      background: rgba(8,11,18,.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar-brand { font-weight: 800; letter-spacing: .5px; }
+    .navbar-brand span { color: var(--accent-2); }
+    .nav-link { color: #cbd3df !important; }
+    .nav-link:hover { color: white !important; }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 90px;
+      position: relative;
+    }
+
+    .badge-custom {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid rgba(0,212,255,.25);
+      background: rgba(0,212,255,.07);
+      color: #8cecff;
+      border-radius: 999px;
+      font-size: .9rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: .95;
+      font-weight: 900;
+      letter-spacing: -4px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #fff, #8cecff, #9c94ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 650px;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: 0;
+      color: white;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 12px;
+      box-shadow: 0 10px 35px rgba(108,99,255,.22);
+    }
+
+    .btn-primary-custom:hover { color: white; transform: translateY(-2px); }
+
+    .btn-outline-custom {
+      border: 1px solid var(--border);
+      color: white;
+      padding: 11px 22px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .btn-outline-custom:hover { background: rgba(255,255,255,.07); color: white; }
+
+    .hero-card {
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.35);
+    }
+
+    .profile-orb {
+      width: 210px;
+      height: 210px;
+      margin: auto;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 35% 30%, #fff, #8cecff 12%, #6c63ff 48%, #17112e 75%);
+      box-shadow: 0 0 70px rgba(108,99,255,.4);
+      font-size: 4.5rem;
+      font-weight: 900;
+    }
+
+    section { padding: 100px 0; }
+    .section-label {
+      color: var(--accent-2);
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 850;
+      margin-top: 8px;
+    }
+
+    .section-subtitle { color: var(--muted); max-width: 700px; }
+
+    .glass-card {
+      height: 100%;
+      background: rgba(16,22,33,.75);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: .25s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(108,99,255,.45);
+      box-shadow: 0 18px 45px rgba(0,0,0,.2);
+    }
+
+    .skill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 13px;
+      margin: 5px 3px;
+      border-radius: 10px;
+      background: var(--card-2);
+      border: 1px solid var(--border);
+      color: #dfe6f0;
+    }
+
+    .timeline {
+      border-left: 2px solid rgba(108,99,255,.45);
+      padding-left: 25px;
+    }
+
+    .timeline-item { position: relative; margin-bottom: 35px; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-2);
+      border-radius: 50%;
+      left: -32px;
+      top: 6px;
+      box-shadow: 0 0 15px rgba(0,212,255,.65);
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(108,99,255,.16), rgba(0,212,255,.08));
+      border: 1px solid rgba(108,99,255,.28);
+      border-radius: 25px;
+      padding: 45px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      padding: 25px 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: .7s ease;
+    }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    .stat-number { font-size: 2rem; font-weight: 850; }
+    .small-muted { color: var(--muted); font-size: .92rem; }
+
+    @media (max-width: 767px) {
+      .hero { text-align: center; }
+      .hero h1 { letter-spacing: -2px; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .contact-box { padding: 28px 20px; }
+      section { padding: 75px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-white" href="#home">PH<span>.</span></a>
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="bi bi-list text-white fs-2"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-8 reveal">
+          <span class="badge-custom mb-4">
+            <i class="bi bi-code-slash"></i> Computer Science Student
+          </span>
+          <h1 class="mb-4">Hi, I'm <span class="gradient-text">Henil Patel.</span></h1>
+          <p class="mb-4">
+            A B.Tech student at Indus University with a strong interest in software development,
+            web technologies and programming. I enjoy building practical digital solutions and learning new technologies.
+          </p>
+          <div class="d-flex flex-wrap gap-3 justify-content-lg-start justify-content-center">
+            <a href="#contact" class="btn btn-primary-custom">Let's Connect <i class="bi bi-arrow-right ms-1"></i></a>
+            <a href="#skills" class="btn btn-outline-custom">View Skills</a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 reveal">
+          <div class="hero-card text-center">
+            <div class="profile-orb mb-4">HP</div>
+            <h4 class="fw-bold mb-1">Patel Henil</h4>
+            <p class="small-muted mb-0">B.Tech · Indus University</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-5 reveal">
+        <div class="col-6 col-md-3">
+          <div class="glass-card text-center py-4">
+            <div class="stat-number">7+</div>
+            <div class="small-muted">Core Technologies</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="glass-card text-center py-4">
+            <div class="stat-number">B.Tech</div>
+            <div class="small-muted">Degree Program</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="glass-card text-center py-4">
+            <div class="stat-number">CSE</div>
+            <div class="small-muted">Computer Science</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="glass-card text-center py-4">
+            <div class="stat-number">24/7</div>
+            <div class="small-muted">Learning Mindset</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5 reveal">
+          <div class="glass-card">
+            <div class="section-label">About Me</div>
+            <h2 class="section-title">Building skills, one project at a time.</h2>
+            <p class="section-subtitle mt-3 mb-0">
+              I'm a B.Tech student focused on developing a solid foundation in programming and web development.
+              My goal is to turn ideas into clean, useful and responsive applications.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-7 reveal">
+          <h3 class="fw-bold mb-3">A curious developer with a practical approach.</h3>
+          <p class="text-secondary">
+            I have experience learning and working with multiple programming languages and web technologies.
+            I like understanding how systems work, solving programming problems and creating interfaces that work well across devices.
+          </p>
+          <div class="row mt-4 g-3">
+            <div class="col-md-6">
+              <div class="glass-card">
+                <i class="bi bi-laptop fs-2 text-info"></i>
+                <h5 class="mt-3">Web Development</h5>
+                <p class="small-muted mb-0">Responsive websites using HTML, PHP, Bootstrap and JavaScript.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="glass-card">
+                <i class="bi bi-terminal fs-2 text-info"></i>
+                <h5 class="mt-3">Programming</h5>
+                <p class="small-muted mb-0">Problem solving and programming with Java, Python, C and C++.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Technical Skills</div>
+        <h2 class="section-title">Technologies I work with.</h2>
+        <p class="section-subtitle mt-3">My current programming and web-development skill set.</p>
+      </div>
+
+      <div class="row g-4 mt-3">
+        <div class="col-lg-7 reveal">
+          <div class="glass-card">
+            <h5 class="fw-bold mb-4">Programming Languages</h5>
+            <span class="skill"><i class="bi bi-filetype-java"></i> Java</span>
+            <span class="skill"><i class="bi bi-code-square"></i> Python</span>
+            <span class="skill"><i class="bi bi-c-circle"></i> C</span>
+            <span class="skill"><i class="bi bi-code-slash"></i> C++</span>
+          </div>
+        </div>
+        <div class="col-lg-5 reveal">
+          <div class="glass-card">
+            <h5 class="fw-bold mb-4">Web Technologies</h5>
+            <span class="skill"><i class="bi bi-filetype-html"></i> HTML</span>
+            <span class="skill"><i class="bi bi-filetype-php"></i> PHP</span>
+            <span class="skill"><i class="bi bi-bootstrap"></i> Bootstrap</span>
+            <span class="skill"><i class="bi bi-filetype-js"></i> JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Education</div>
+        <h2 class="section-title">Academic journey.</h2>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-lg-8 reveal">
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4 class="fw-bold">B.Tech in Computer Science</h4>
+              <p class="mb-1 text-info">Indus University</p>
+              <p class="small-muted mb-0">
+                Currently pursuing a Bachelor of Technology with a focus on computer science,
+                programming and software development.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="fw-bold">Continuous Learning</h4>
+              <p class="mb-1 text-info">Programming & Web Technologies</p>
+              <p class="small-muted mb-0">
+                Building practical knowledge through coding, academic work and personal projects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box reveal text-center">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's build something together.</h2>
+        <p class="section-subtitle mx-auto mt-3">
+          I'm open to learning opportunities, collaborations and technology-focused projects.
+        </p>
+        <a class="btn btn-primary-custom mt-3" href="mailto:patelhenil.24.cse@iite.indusuni.ac.in">
+          <i class="bi bi-envelope me-2"></i>patelhenil.24.cse@iite.indusuni.ac.in
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>© <span id="year"></span> Patel Henil. All rights reserved.</span>
+      <span>Built with HTML, Bootstrap & JavaScript.</span>
+    </div>
+  </footer>
+
+  <button id="topBtn" class="btn btn-primary-custom position-fixed bottom-0 end-0 m-3 d-none" aria-label="Back to top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Reveal animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // Back-to-top button
+    const topBtn = document.getElementById("topBtn");
+    window.addEventListener("scroll", () => {
+      topBtn.classList.toggle("d-none", window.scrollY < 500);
+    });
+    topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll(".navbar .nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        const menu = document.getElementById("navMenu");
+        if (menu.classList.contains("show")) {
+          bootstrap.Collapse.getOrCreateInstance(menu).hide();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
